@@ -160,7 +160,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 85px 15px 60px;
+  padding: 15px 100px 15px 50px;
 }
 
 .todo-list li label .created {
@@ -197,7 +197,7 @@ body {
 
 .todo-list li .icon-destroy {
 	position: absolute;
-	top: -25px;
+	top: 0px;
 	bottom: 0px;
 	right: 10px;
   font-size: 30px;
@@ -209,9 +209,9 @@ body {
 
 .todo-list li .icon-edit {
 	position: absolute;
-	top: -25px;
+	top: 0px;
 	bottom: 0px;
-	right: 45px;
+	right: 40px;
   font-size: 20px;
 }
 
@@ -227,14 +227,14 @@ body {
 
 .todo-list li .icon-play {
   top: 0;
-	bottom: -25px;
-	right: 45px;
+	bottom: 0px;
+	right: 70px;
 }
 
 .todo-list li .icon-pause{
   top: 0;
-	bottom: -25px;
-	right: 10px;
+	bottom: 0px;
+	right: 70px;
 }
 
 .icon-pause:after {

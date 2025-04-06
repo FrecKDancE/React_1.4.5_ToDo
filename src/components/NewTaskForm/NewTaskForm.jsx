@@ -4,12 +4,23 @@ import './NewTaskForm.css'
 
 const NewTaskForm = ({ onAddTask }) => {
   const [newTaskLabel, setNewTaskLabel] = useState('')
+  const [minLabel, setMinLabel] = useState('')
+  const [secLabel, setSecLabel] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (newTaskLabel.trim().length > 0) {
-      onAddTask(newTaskLabel)
+    if (newTaskLabel.trim().length > 0 && (minLabel || secLabel)) {
+      const duration = parseInt(minLabel || 0) * 60 + parseInt(secLabel || 0)
+      onAddTask(newTaskLabel, duration)
       setNewTaskLabel('')
+      setMinLabel('')
+      setSecLabel('')
+    }
+    else if (newTaskLabel.trim().length < 1){
+      alert('Необходимо указать задачу')
+    }
+    else if (!minLabel || !secLabel) {
+      alert('Необходимо указать время на выполнение задачи (минуты или секунды')
     }
   }
 
@@ -19,21 +30,23 @@ const NewTaskForm = ({ onAddTask }) => {
       <form onSubmit={handleSubmit}>
         <input
           className="new-todo"
-          placeholder="What needs to be done?"
-          autoFocus
+          placeholder="Task"
           value={newTaskLabel}
           onChange={(e) => setNewTaskLabel(e.target.value)}
         />
         <input
           className="min"
           placeholder='Min'
-        >
-        </input>
+          value={minLabel}
+          onChange={(e) => setMinLabel(e.target.value)}
+        />
         <input
           className="sec"
           placeholder='Sec'
-        >
-        </input>
+          value={secLabel}
+          onChange={(e) => setSecLabel(e.target.value)}
+        />
+        <button type="submit"></button>
       </form>
     </header>
   )
